@@ -38,13 +38,13 @@ public class CachingGemfireApplication {
     long startTime = System.currentTimeMillis();
 
     Quote quote = Optional.ofNullable(id)
-      .map(quoteService::requestQuote)
-      .orElseGet(quoteService::requestRandomQuote);
+        .map(quoteService::requestQuote)
+        .orElseGet(quoteService::requestRandomQuote);
 
     long elapsedTime = System.currentTimeMillis();
 
     System.out.printf("\"%1$s\"%nCache Miss [%2$s] - Elapsed Time [%3$s ms]%n", quote,
-      quoteService.isCacheMiss(), (elapsedTime - startTime));
+        quoteService.isCacheMiss(), (elapsedTime - startTime));
 
     return quote;
   }

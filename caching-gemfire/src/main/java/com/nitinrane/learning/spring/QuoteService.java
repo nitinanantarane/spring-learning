@@ -13,8 +13,8 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class QuoteService {
 
-  protected static final String ID_BASED_QUOTE_SERVICE_URL = "https://quoters.apps.pcfone.io/api/{id}";
-  protected static final String RANDOM_QUOTE_SERVICE_URL = "https://quoters.apps.pcfone.io/api/random";
+  protected static final String ID_BASED_QUOTE_SERVICE_URL = "http://localhost:9000/api/byId/{id}";
+  protected static final String RANDOM_QUOTE_SERVICE_URL = "http://localhost:9000/api/random";
 
   private volatile boolean cacheMiss = false;
 
@@ -65,7 +65,7 @@ public class QuoteService {
   protected Quote requestQuote(String URL, Map<String, Object> urlVariables) {
 
     return Optional.ofNullable(this.quoteServiceTemplate.getForObject(URL, QuoteResponse.class, urlVariables))
-      .map(QuoteResponse::getQuote)
-      .orElse(null);
+        .map(QuoteResponse::getQuote)
+        .orElse(null);
   }
 }
