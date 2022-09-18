@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: restsvcnm
+  name: restsvcnm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restsvcnm
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: restsvcnm
+    spec:
+      containers:
+      - image: springio/rest-service-docker:latest
+        name: rest-service-k8s
+        resources: {}
+status: {}
